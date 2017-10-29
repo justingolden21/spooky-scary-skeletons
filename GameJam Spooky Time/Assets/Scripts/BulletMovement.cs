@@ -26,8 +26,8 @@ public class BulletMovement : MonoBehaviour {
 
     //method for making the bullet fly
     void FlyLeft()
-    {
-        rb.velocity = new Vector3(_XbulletIncrement,0f,0f);
+    {        
+        rb.velocity = new Vector3(_XbulletIncrement, Random.Range(-1.0f, 1.0f), 0f);
     }
 
 }

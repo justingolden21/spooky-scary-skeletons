@@ -121,6 +121,6 @@ public class CharController : MonoBehaviour {
 		
         
         GameObject bullet = Instantiate(projectile, transform.position + new Vector3(1,0,0), Quaternion.identity) as GameObject;
-        Debug.Log("Boom!  :D");
+        //Debug.Log("Boom!  :D");
 	}
 }

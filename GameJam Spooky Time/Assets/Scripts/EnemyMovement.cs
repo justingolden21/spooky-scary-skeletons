@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
-    private const float _movementIncrement = .04f;
+    private const float _movementIncrement = .09f;
     public GameObject projectile;
+    public int lane;
 
     private int _health = 3;
     public Color[] EnemyColor;
@@ -32,19 +33,20 @@ public class EnemyMovement : MonoBehaviour {
 
         if (collision.gameObject.tag == "Bullet")
         {
-            Debug.Log("Hit");
             
             _health -= 1;
-
-
-
+            
             if (_health == 0)
             {
+                gameObject.GetComponent<EnemyManager>().isSpawned[lane] -= 1;
                 Destroy(gameObject);
+
             }
-            _renderer = GetComponent<SpriteRenderer>();
-            _renderer.color = EnemyColor[_health];
-            
+            /*
+            {
+                _renderer = GetComponent<SpriteRenderer>();
+                _renderer.color = EnemyColor[_health];
+            }*/
 
 
         }
