@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CandyCorn
   - Baron
+  - Spawn
   layers:
   - Default
   - TransparentFX
