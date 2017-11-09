@@ -654,6 +654,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114384477530968486, guid: 5e91712711c0ab74ca17f2143bbdbbd0,
+        type: 2}
+      propertyPath: _plane1
+      value: 
+      objectReference: {fileID: 21300000, guid: fd8049e2bf5a71f4f998b47cc7b559b4,
+        type: 3}
+    - target: {fileID: 114384477530968486, guid: 5e91712711c0ab74ca17f2143bbdbbd0,
+        type: 2}
+      propertyPath: _plane2
+      value: 
+      objectReference: {fileID: 21300000, guid: a32a09dd00873aa468789c7df37859e2,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e91712711c0ab74ca17f2143bbdbbd0, type: 2}
   m_IsPrefabParent: 0

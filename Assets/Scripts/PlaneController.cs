@@ -10,16 +10,20 @@ public class PlaneController : MonoBehaviour {
     private const float _playerRightMovementLimit = 1.25f;
     private const float _playerLeftMovementLimit = -5.25f;
     private Vector3 _playerStartingPosition;
+    private bool _plane1SpriteIsShown;
 
     public static int _playerHealth = 3;
     public static bool _gameIsActive;
 
     public GameObject _candyCorn, _firingPoint;
+    public Sprite _plane1, _plane2;
 
     void Start()
     {
         _playerStartingPosition = transform.position;
         _gameIsActive = true;
+        _plane1SpriteIsShown = true;
+        StartCoroutine(switchPlaneSprites());
     }
 
     // Update is called once per frame
@@ -117,12 +121,29 @@ public class PlaneController : MonoBehaviour {
         }
    }
 
+    private IEnumerator switchPlaneSprites()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if (_plane1SpriteIsShown)
+        {
+            GetComponent<SpriteRenderer>().sprite = _plane2;
+            _plane1SpriteIsShown = false;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = _plane1;
+            _plane1SpriteIsShown = true;
+        }
+        StartCoroutine(switchPlaneSprites());
+    }
+
     private void restartGame()
     {
         transform.position = _playerStartingPosition;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         _playerHealth = 3;
         ScoreManager._score=0;
+        SpawnManager._miniBossSpawned = false;
         GetComponent<Collider2D>().enabled = true;
         _gameIsActive = true;
     }

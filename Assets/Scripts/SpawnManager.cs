@@ -138,6 +138,12 @@ public class SpawnManager : MonoBehaviour
             _Spawn4Variables.spawnedEnemy.GetComponent<Collider2D>().enabled = false;
         }
 
+        if (_miniBossSpawned)
+        {
+            _EnemySpawnedAt3.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
+            _EnemySpawnedAt3.GetComponent<Collider2D>().enabled = false;
+        }
+
         yield return new WaitForSeconds(.5f);
         if (_Spawn1Variables.spawnedEnemy != null)
             Destroy(_Spawn1Variables.spawnedEnemy);
@@ -147,6 +153,8 @@ public class SpawnManager : MonoBehaviour
             Destroy(_Spawn3Variables.spawnedEnemy);
         if (_Spawn4Variables.spawnedEnemy != null)
             Destroy(_Spawn4Variables.spawnedEnemy);
+        if (_miniBossSpawned)
+            Destroy(_EnemySpawnedAt3);
 
         _Spawn1Variables.spawnLocked = true;
         _Spawn2Variables.spawnLocked = true;

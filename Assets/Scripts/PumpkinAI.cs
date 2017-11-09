@@ -58,10 +58,7 @@ public class PumpkinAI : MonoBehaviour
         GameObject _thirdEmber = Instantiate(_Ember, _firingPoint.transform.position, Quaternion.identity);
         _thirdEmber.GetComponent<Rigidbody2D>().velocity = new Vector3(-4, 0, 0);
 
-        yield return new WaitForSeconds(3);
-        Destroy(_firstEmber);
-        Destroy(_secondEmber);
-        Destroy(_thirdEmber);
+        yield return new WaitForSeconds(2.5f);
 
         if (PlaneController._gameIsActive)
             StartCoroutine(fire());

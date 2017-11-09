@@ -10,6 +10,7 @@ public class SpiritFlameDestroyer : MonoBehaviour
         if (SpawnManager._miniBossSpawned) {
             transform.localScale = new Vector3(1, 1, 0);
         }
+        StartCoroutine(timedDestruction());
     }
 
     void Update()
@@ -22,5 +23,11 @@ public class SpiritFlameDestroyer : MonoBehaviour
         if (col.gameObject.tag == "Baron") {
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator timedDestruction()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }

@@ -11,6 +11,8 @@ public class WaveDestroyer : MonoBehaviour {
         {
             transform.localScale = new Vector3(1, 1, 0);
         }
+
+        StartCoroutine(timedDestruction());
     }
 
 	void Update () {
@@ -24,5 +26,11 @@ public class WaveDestroyer : MonoBehaviour {
     {
         if (col.gameObject.tag == "Baron")
             Destroy(gameObject);
+    }
+
+    private IEnumerator timedDestruction()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }

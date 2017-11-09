@@ -49,7 +49,7 @@ public class WraithAI : MonoBehaviour
         _ghastlyWaveClone.GetComponent<Rigidbody2D>().velocity = new Vector3(-4, 0, 0);
 
         yield return new WaitForSeconds(3);
-        Destroy(_ghastlyWaveClone);
+        
         if (PlaneController._gameIsActive)
             StartCoroutine(fire());
     }

@@ -53,10 +53,7 @@ public class WitchAI : MonoBehaviour
         GameObject _spiritFlameDiagUpClone = Instantiate(_spiritFlame, _firingPoint.transform.position, Quaternion.identity);
         _spiritFlameDiagUpClone.GetComponent<Rigidbody2D>().velocity = new Vector3(-4, 1, 0);
 
-        yield return new WaitForSeconds(3);
-        Destroy(_spiritFlameLeftClone);
-        Destroy(_spiritFlameDiagUpClone);
-        Destroy(_spiritFlameDiagDownClone);
+        yield return new WaitForSeconds(2.5f);
 
         if (PlaneController._gameIsActive)
             StartCoroutine(fire());
