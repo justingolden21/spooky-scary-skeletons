@@ -5,9 +5,10 @@ using UnityEngine;
 //Destroys bullets on collisions.  PlaneController.cs handles timed destructions :)
 public class BulletDestroyer : MonoBehaviour {
 
-    void Awake()
+    void Update()
     {
-        Destroy(this, 3);
+        if (!PlaneController._gameIsActive)
+            Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D col)

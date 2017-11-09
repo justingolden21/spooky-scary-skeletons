@@ -53,12 +53,17 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BatAI.cs" />
      <Compile Include="Assets\Scripts\BulletDestroyer.cs" />
+     <Compile Include="Assets\Scripts\HealthDisplay.cs" />
+     <Compile Include="Assets\Scripts\HealthUpManager.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
      <Compile Include="Assets\Scripts\PumpkinAI.cs" />
+     <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\SpawnManager.cs" />
      <Compile Include="Assets\Scripts\SpiritFlameDestroyer.cs" />
      <Compile Include="Assets\Scripts\VariablesForEachSpawn.cs" />
+     <Compile Include="Assets\Scripts\WaveDestroyer.cs" />
      <Compile Include="Assets\Scripts\WitchAI.cs" />
+     <Compile Include="Assets\Scripts\WraithAI.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

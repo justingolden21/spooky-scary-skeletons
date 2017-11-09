@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Destroys bullets on collisions.  PlaneController.cs handles timed destructions :)
+//Destroys bullets on player collisions.  WitchAI.cs handles timed destructions :)
 public class SpiritFlameDestroyer : MonoBehaviour
 {
-    public int _direction;
 
-    void Update() {
-        
-        //transform.position += new Vector3(-.2f, .2f, 0);
-        //transform.GetComponent<Rigidbody2D>().velocity = new Vector3(-4f, 0, 0);
+    void Start() {
+        if (SpawnManager._miniBossSpawned) {
+            transform.localScale = new Vector3(1, 1, 0);
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void Update()
     {
-        if (col.gameObject.tag == "Baron")
+        if (!PlaneController._gameIsActive)
             Destroy(gameObject);
-        //else
-            //Physics2D.IgnoreCollision(gameObject.collider2D,collider2D);
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.gameObject.tag == "Baron") {
+            Destroy(gameObject);
+        }
     }
 }

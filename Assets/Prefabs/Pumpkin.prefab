@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114219337761602586}
   m_Layer: 0
   m_Name: Pumpkin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Ember: {fileID: 1673916345204280, guid: 6601f38cf998b5441a94aa62de83d783, type: 2}
   _firingPoint: {fileID: 1895097561702496}
+  _healthUp: {fileID: 1163712659004194, guid: 4b202683057eed641a2d9a547f3bdfbf, type: 2}
 --- !u!212 &212339719354478940
 SpriteRenderer:
   m_ObjectHideFlags: 1
