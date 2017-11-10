@@ -11,6 +11,7 @@ public class PlaneController : MonoBehaviour {
     private const float _playerLeftMovementLimit = -5.25f;
     private Vector3 _playerStartingPosition;
     private bool _plane1SpriteIsShown;
+    private bool _enemiesHaveHadTimeToDespawn;
 
     public static int _playerHealth = 3;
     public static bool _gameIsActive;
@@ -21,14 +22,15 @@ public class PlaneController : MonoBehaviour {
     void Start()
     {
         _playerStartingPosition = transform.position;
-        _gameIsActive = true;
+        _gameIsActive = false;
         _plane1SpriteIsShown = true;
+        _enemiesHaveHadTimeToDespawn = false;
         StartCoroutine(switchPlaneSprites());
     }
 
     // Update is called once per frame
     void Update () {
-        if (_gameIsActive)
+        if (GameMenuVariables._atMainMenu || _gameIsActive)
         {
             if (Input.GetKey(KeyCode.W))
                 moveUp();
@@ -41,13 +43,12 @@ public class PlaneController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space))
                 fireStandard();
         }
-        else
+        else if (!_gameIsActive && _enemiesHaveHadTimeToDespawn)
         {
             if (Input.GetKeyDown(KeyCode.R))
                 restartGame();
             else if (Input.GetKeyDown(KeyCode.Q))
                 returnToMainMenu();
-            
         }
     }
 
@@ -79,12 +80,6 @@ public class PlaneController : MonoBehaviour {
     {
         GameObject _candyCornBulletClone = Instantiate(_candyCorn, _firingPoint.transform.position, Quaternion.identity);
         _candyCornBulletClone.GetComponent<Rigidbody2D>().velocity = new Vector3(5, 0, 0);
-        StartCoroutine(timedBulletDestruction(_candyCornBulletClone));
-    }
-
-    private IEnumerator timedBulletDestruction(GameObject _projectile) {
-        yield return new WaitForSeconds(3);
-        Destroy(_projectile);
     }
 
     void OnTriggerEnter2D(Collider2D col) {
@@ -99,6 +94,7 @@ public class PlaneController : MonoBehaviour {
             {
                 GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                 _gameIsActive = false;
+                StartCoroutine(allowEnemiesTimeToDespawn());
             }
             else
             {
@@ -137,19 +133,32 @@ public class PlaneController : MonoBehaviour {
         StartCoroutine(switchPlaneSprites());
     }
 
+    private IEnumerator allowEnemiesTimeToDespawn()
+    {
+        yield return new WaitForSeconds(2);
+        _enemiesHaveHadTimeToDespawn = true;
+    }
+
     private void restartGame()
     {
-        transform.position = _playerStartingPosition;
-        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-        _playerHealth = 3;
-        ScoreManager._score=0;
-        SpawnManager._miniBossSpawned = false;
-        GetComponent<Collider2D>().enabled = true;
+        respawnCharacter();
         _gameIsActive = true;
     }
 
     private void returnToMainMenu()
     {
+        respawnCharacter();
+        GameMenuVariables._atMainMenu = true;
+    }
 
+    private void respawnCharacter()
+    {
+        transform.position = _playerStartingPosition;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        _playerHealth = 3;
+        ScoreManager._score = 0;
+        SpawnManager._currentScoreTier = 0;
+        _enemiesHaveHadTimeToDespawn = false;
+        GetComponent<Collider2D>().enabled = true;
     }
 }

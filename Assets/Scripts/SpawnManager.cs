@@ -11,7 +11,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject _EnemySpawnedAt1, _EnemySpawnedAt2, _EnemySpawnedAt3, _EnemySpawnedAt4;
     private VariablesForEachSpawn _Spawn1Variables, _Spawn2Variables, _Spawn3Variables, _Spawn4Variables;
     public static bool _miniBossSpawned;
-    private int _randomLocation, _randomEnemy, _currentScoreTier;
+    private int _randomLocation, _randomEnemy;
+    public static int _currentScoreTier;
 
     //First, grabs our scripts from each respective spawn, then uses/sets their respective variables
     void Start()
@@ -70,10 +71,8 @@ public class SpawnManager : MonoBehaviour
                 _EnemyChosen = _Wraith;
 
             if (scorePermitsMiniBoss() && !_miniBossSpawned) {
-                StartCoroutine(despawnAllEnemies());
                 _miniBossSpawned = true;
-                _EnemySpawnedAt3 = Instantiate(_EnemyChosen, _Spawn3.transform.position, Quaternion.identity);
-                //_Spawn3Variables.spawnedEnemy = _EnemySpawnedAt3;
+                StartCoroutine(despawnAllEnemies());
             }
             else {
                 if (_spawnPosition == 0 && !_Spawn1Variables.spawnLocked)
@@ -138,11 +137,10 @@ public class SpawnManager : MonoBehaviour
             _Spawn4Variables.spawnedEnemy.GetComponent<Collider2D>().enabled = false;
         }
 
-        if (_miniBossSpawned)
-        {
-            _EnemySpawnedAt3.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
-            _EnemySpawnedAt3.GetComponent<Collider2D>().enabled = false;
-        }
+        _Spawn1Variables.spawnLocked = true;
+        _Spawn2Variables.spawnLocked = true;
+        _Spawn3Variables.spawnLocked = true;
+        _Spawn4Variables.spawnLocked = true;
 
         yield return new WaitForSeconds(.5f);
         if (_Spawn1Variables.spawnedEnemy != null)
@@ -153,13 +151,21 @@ public class SpawnManager : MonoBehaviour
             Destroy(_Spawn3Variables.spawnedEnemy);
         if (_Spawn4Variables.spawnedEnemy != null)
             Destroy(_Spawn4Variables.spawnedEnemy);
-        if (_miniBossSpawned)
-            Destroy(_EnemySpawnedAt3);
 
-        _Spawn1Variables.spawnLocked = true;
-        _Spawn2Variables.spawnLocked = true;
-        _Spawn3Variables.spawnLocked = true;
-        _Spawn4Variables.spawnLocked = true;
+        if (_miniBossSpawned && PlaneController._gameIsActive)
+        {
+            _EnemySpawnedAt3 = Instantiate(_EnemyChosen, _Spawn3.transform.position, Quaternion.identity);
+            _Spawn3Variables.spawnedEnemy = _EnemySpawnedAt3;
+        }
+        else if (_miniBossSpawned && !PlaneController._gameIsActive)
+        {
+            _Spawn3Variables.spawnedEnemy.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
+            _Spawn3Variables.spawnedEnemy.GetComponent<Collider2D>().enabled = false;
+            yield return new WaitForSeconds(.5f);
+            Destroy(_Spawn3Variables.spawnedEnemy);
+            _miniBossSpawned = false;
+        }
+
     }
 
     private bool scorePermitsMiniBoss()

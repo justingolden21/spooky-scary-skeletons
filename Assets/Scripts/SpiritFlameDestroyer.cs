@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Destroys bullets on player collisions.  WitchAI.cs handles timed destructions :)
 public class SpiritFlameDestroyer : MonoBehaviour
 {
 

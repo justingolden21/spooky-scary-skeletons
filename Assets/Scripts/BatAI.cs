@@ -63,7 +63,7 @@ public class BatAI : MonoBehaviour
                     SpawnManager._miniBossSpawned = false;
                 }
                 else
-                    ScoreManager._score += 200;
+                    ScoreManager._score += 300;
             }
         }
     }

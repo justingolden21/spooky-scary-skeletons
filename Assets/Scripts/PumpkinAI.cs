@@ -18,7 +18,7 @@ public class PumpkinAI : MonoBehaviour
         if (SpawnManager._miniBossSpawned)
         {
             _pumpkinHealth = 20;
-            transform.localScale = new Vector3(1, 1, 0);
+            transform.localScale = new Vector3(3, 3, 0);
             _healthDropChance = 25;
         }
         else

@@ -8,6 +8,12 @@ public class ScoreManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<UnityEngine.UI.Text>().text = "Score: "+_score;
-	}
+        if (GameMenuVariables._atMainMenu)
+            GetComponent<UnityEngine.UI.Text>().enabled = false;
+        else
+        {
+            GetComponent<UnityEngine.UI.Text>().enabled = true;
+            GetComponent<UnityEngine.UI.Text>().text = "Score: " + _score;
+        }
+    }
 }

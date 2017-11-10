@@ -66,7 +66,7 @@ Transform:
   m_GameObject: {fileID: 1332051971923048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.1974318, y: 12.457843, z: -0.47998667}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 4561321373253282}
   m_Father: {fileID: 0}
@@ -108,14 +108,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.4, y: 1.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &114219337761602586
 MonoBehaviour:
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd17f35be93a3346b184358efff22ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Ember: {fileID: 1673916345204280, guid: 6601f38cf998b5441a94aa62de83d783, type: 2}
+  _Ember: {fileID: 1585530936886306, guid: 7170f1ae2478e3440a8f74d135677427, type: 2}
   _firingPoint: {fileID: 1895097561702496}
   _healthUp: {fileID: 1163712659004194, guid: 4b202683057eed641a2d9a547f3bdfbf, type: 2}
 --- !u!212 &212339719354478940
@@ -165,8 +165,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 77563e249148c5f41a80bff1f3263ee0, type: 3}
-  m_Color: {r: 1, g: 0.43448275, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4da8e5eeb60cd6249a75d5ee9bc7bb26, type: 3}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

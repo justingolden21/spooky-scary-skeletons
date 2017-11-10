@@ -53,6 +53,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BatAI.cs" />
      <Compile Include="Assets\Scripts\BulletDestroyer.cs" />
+     <Compile Include="Assets\Scripts\EmberDestroyer.cs" />
+     <Compile Include="Assets\Scripts\GameMenuVariables.cs" />
+     <Compile Include="Assets\Scripts\GameStarter.cs" />
      <Compile Include="Assets\Scripts\HealthDisplay.cs" />
      <Compile Include="Assets\Scripts\HealthUpManager.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
