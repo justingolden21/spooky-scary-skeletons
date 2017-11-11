@@ -13,8 +13,16 @@ public class GameMenuVariables : MonoBehaviour {
     void Update()
     {
         if (_atMainMenu)
+        {
             _deadBaronTitle.GetComponent<SpriteRenderer>().enabled = true;
+            if (!GetComponent<AudioSource>().isPlaying) {
+                GetComponent<AudioSource>().Play();
+            }
+        }
         else
+        {
             _deadBaronTitle.GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<AudioSource>().Stop();
+        }
     }
 }
